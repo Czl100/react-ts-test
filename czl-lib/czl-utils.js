@@ -1,11 +1,10 @@
 export function createPrint(level){
   return function (...args){
     const length = args.length;
-    console[level]('\n');
-
     if(length===0){
-      return console[level]('\n---------------------------------------------------------------------------------------');
+      return console[level]('\n---------------------------------------------------');
     }
+    
     const hasConfigColor = /^color\:/.test(args[length-1]);
     const color = hasConfigColor ? args.pop() : 'color: #FFF';
     if(typeof args[0] === 'string'){

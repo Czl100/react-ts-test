@@ -1,30 +1,28 @@
-import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Input from './components/Input';
+import { ClsCmp } from './components/class-cmp';
 import '../czl-lib/czl-utils.js';
-
 
 const App: React.FC = function () {
   pdebug('render app');
-  
-  const handleClick = (e)=>{
-    pdebug('父级 click 事件, e=', e);
-  }
+  const [parentVal, setParentVal] = useState(0);
+
   return (
-    <div onClick={handleClick}>
-      <h1>hello world!</h1>
-      <Input />
+    <div id="root-app">
+      <ClsCmp count={parentVal} />
     </div>
   );
 };
 
-// render
-ReactDOM.render(<App />, document.getElementById('root'));
-
-export default App;
-
+// ********* render *****************************
+const AppHoted = hot(App);
+ReactDOM.render(<AppHoted />, document.getElementById('root'));
 
 // // HMMR: 热更新
-// if (module.hot) {
-//   module.hot.accept();
-// }
+if (module.hot) {
+  module.hot.accept('./components/class-cmp.tsx', function () {
+    console.debug('Accepting the updated printMe module!');
+  });
+}

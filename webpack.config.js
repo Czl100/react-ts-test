@@ -20,6 +20,24 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        // use: ['css-loader', 'sass-loader'],
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
         // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader',
@@ -36,6 +54,7 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
       template: './public/index.html',
+      title: '哈哈哈哈哈'
     }),
   ],
   devServer: {
