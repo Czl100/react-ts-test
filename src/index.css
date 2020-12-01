@@ -1,0 +1,13 @@
+#root-app {
+  width: 80%;
+  margin: 20px auto 0 auto;
+  outline: 1px blue solid;
+}
+
+div.input {
+  /* height: 50px; */
+  outline: 1px solid red;
+}
+div.input:empty::before {
+  content: attr(placeholder);
+}

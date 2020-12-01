@@ -6,10 +6,11 @@ const defaultProps = {
 };
 type IProps = {
   age?: number;
-  count: number;
+  count?: number;
+  [k: string]: any;
 } & Partial<typeof defaultProps>;
 
-export class ClsCmp extends Component<IProps, any> {
+export class ClsCmp extends React.PureComponent<IProps, any> {
   static defaultProps = defaultProps;
 
   constructor(props) {
@@ -21,11 +22,11 @@ export class ClsCmp extends Component<IProps, any> {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, nextState) {
-    pdebug('\ngetDerivedStateFromProps', 'color:red');
-    pdebug('nextProps: %o\nnextState: %o', nextProps, nextState);
-    return null;
-  }
+  // static getDerivedStateFromProps(nextProps, nextState) {
+  //   pdebug('\ngetDerivedStateFromProps', 'color:red');
+  //   pdebug('nextProps: %o\nnextState: %o', nextProps, nextState);
+  //   return null;
+  // }
 
   handleChangeText = (text) => {
     this.setState({
@@ -55,18 +56,12 @@ export class ClsCmp extends Component<IProps, any> {
   };
 
   render() {
-    pdebug('\nrender!', 'color:yellow');
-    const { name } = this.props;
+    pdebug('\nrender ClsCmp', 'color:yellow');
     return (
       <div className="ClsCmp" onClick={this.handleClick}>
         <p>我是ClsCmp组件: {this.state.count}</p>
         <button onClick={this.handleClick}>点击修改state</button>
         <Child handleChangeStateA={this.handleChangeState} />
-        <br />
-        <br />
-        <Input onChange={this.handleChangeText} />
-
-        <h1>{name.length}</h1>
       </div>
     );
   }

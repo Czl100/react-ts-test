@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Input = function (props) {
-  pdebug('渲染Input组件');
+  pdebug('\n渲染Input组件');
   const { onChange } = props;
+
+  useEffect(() => {
+    pdebug('Input组件=>useEffect!');
+    return () => pdebug('Input组件=>useEffect clean!');
+  });
+
   const handleChange = (e) => {
     onChange && onChange(e.target.value);
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    // pdebug('子组件 onClick 事件\ne=', e);
     e.stopPropagation();
   };
 

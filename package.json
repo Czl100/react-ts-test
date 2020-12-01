@@ -4,7 +4,6 @@
   "description": "react-ts-练习项目",
   "main": "index.tsx",
   "scripts": {
-    "prestart": "rm -rf dist/",
     "start": "webpack-dev-server --mode development --open",
     "dev": "webpack",
     "lib": "tsc"
@@ -26,6 +25,7 @@
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^4.14.1",
     "react-hot-loader": "^4.13.0",
+    "sass-loader": "^10.1.0",
     "source-map-loader": "^1.1.1",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.6",
